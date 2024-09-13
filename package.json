@@ -1,0 +1,20 @@
+{
+  "name": "qiankun-rsbuild-starter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "dev-all": "pnpm --filter \"./packages/*\" run dev",
+    "build-all": "pnpm --filter \"./packages/*\" run build"
+  },
+  "engines": {
+    "node": ">=18.12.0",
+    "pnpm": ">= 9.8.0"
+  },
+  "packageManager": "pnpm@9.10.0",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
