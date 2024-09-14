@@ -19,7 +19,7 @@ const routes: RouteRecordRaw[] = [
         component: () => import('@/components/SubContainer.vue')
       },
       {
-        path: '/app/app-vue2/',
+        path: '/app/app-vue2/:pathMatch(.*)*',
         name: 'app-vue2',
         meta: {},
         component: () => import('@/components/SubContainer.vue')
