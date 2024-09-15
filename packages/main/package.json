@@ -10,6 +10,7 @@
     "preview": "rsbuild preview"
   },
   "dependencies": {
+    "@element-plus/icons-vue": "^2.3.1",
     "dayjs": "^1.11.13",
     "element-plus": "^2.8.3",
     "qiankun": "^2.10.16",

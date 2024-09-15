@@ -12,6 +12,12 @@ const routes: RouteRecordRaw[] = [
         component: () => import('../views/home/index.vue')
       },
       {
+        path: '/system/user',
+        name: 'user',
+        meta: { title: '用户管理' },
+        component: () => import('../views/system/user/index.vue')
+      },
+      {
         // history模式需要通配所有路由，详见vue-router文档
         path: '/app/app-vue3/:pathMatch(.*)*',
         name: 'app-vue3',

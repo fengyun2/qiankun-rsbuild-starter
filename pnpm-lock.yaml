@@ -100,6 +100,9 @@ importers:
 
   packages/main:
     dependencies:
+      '@element-plus/icons-vue':
+        specifier: ^2.3.1
+        version: 2.3.1(vue@3.5.5(typescript@5.6.2))
       dayjs:
         specifier: ^1.11.13
         version: 1.11.13

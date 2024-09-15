@@ -15,6 +15,9 @@ export default defineConfig({
     }
   },
   output: {
-    assetPrefix: isPro ? '/main/': '/'
+    assetPrefix: isPro ? '/dist/': '/'
+  },
+  html: {
+    title: '东半球最强的微前端框架'
   }
 });

@@ -1,12 +1,13 @@
 <template>
   <el-config-provider :locale="zhCn">
-    <div class="content">
+    <ILayout />
+    <!-- <div class="content">
       <h1>Main主应用入口</h1>
     </div>
     <router-link to="/app/app-vue2">vue-app2</router-link>
     &nbsp;
     <router-link to="/app/app-vue3">vue-app3</router-link>
-    <router-view />
+    <router-view /> -->
   </el-config-provider>
 </template>
 
@@ -14,6 +15,7 @@
 import { ElConfigProvider } from 'element-plus'
 import zhCn from 'element-plus/es/locale/lang/zh-cn'
 import 'dayjs/locale/zh-cn'
+import ILayout from './layouts/index.vue'
 </script>
 
 <style scoped>
