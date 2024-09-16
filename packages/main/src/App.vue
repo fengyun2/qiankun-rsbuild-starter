@@ -4,9 +4,9 @@
     <!-- <div class="content">
       <h1>Main主应用入口</h1>
     </div>
-    <router-link to="/app/app-vue2">vue-app2</router-link>
+    <router-link to="/app-vue2">vue-app2</router-link>
     &nbsp;
-    <router-link to="/app/app-vue3">vue-app3</router-link>
+    <router-link to="/app-vue3">vue-app3</router-link>
     <router-view /> -->
   </el-config-provider>
 </template>

@@ -9,7 +9,7 @@ function push(subapp: string) {
   history.pushState(null, subapp, subapp);
 }
 function toAppVue3() {
-  push('/app/app-vue3')
+  push('/child/app-vue3')
 }
 export default {
   methods: {

@@ -5,13 +5,23 @@ import App from './App.vue';
 import routes from './router';
 import './index.css';
 
+const isPro = process.env.NODE_ENV === 'production';
+
 let router = null;
 let instance = null;
 let history = null;
 
 function render(props = {}) {
   const { container } = props;
-  history = createWebHistory(window.__POWERED_BY_QIANKUN__ ? '/app/app-vue3' : '/');
+  let baseRoute = '/';
+  if (isPro && window.__POWERED_BY_QIANKUN__) {
+    baseRoute = '/child-app-vue3/';
+  } else if (isPro) {
+    baseRoute = '/child/app-vue3/';
+  } else if (!isPro && window.__POWERED_BY_QIANKUN__) {
+    baseRoute = '/child/app-vue3/';
+  }
+  history = createWebHistory(baseRoute);
   router = createRouter({
     history,
     routes,

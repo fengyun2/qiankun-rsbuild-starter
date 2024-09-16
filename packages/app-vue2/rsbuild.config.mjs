@@ -15,7 +15,7 @@ export default defineConfig({
     }
   },
   output: {
-    assetPrefix: isPro ? '/app-vue2/': '/'
+    assetPrefix: isPro ? '/child/app-vue2/': '/'
   },
   tools: {
     rspack: {

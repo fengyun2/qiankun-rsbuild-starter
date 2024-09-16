@@ -8,6 +8,7 @@
     "preinstall": "npx only-allow pnpm",
     "dev-all": "pnpm --filter \"./packages/*\" run dev",
     "build-all": "pnpm --filter \"./packages/*\" run build",
+    "postbuild-all": "echo I run after all build",
     "format": "prettier --write .",
     "lint": "eslint ."
   },

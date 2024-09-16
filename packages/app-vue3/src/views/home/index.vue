@@ -8,6 +8,6 @@ function push(subapp: string) {
   history.pushState(null, subapp, subapp);
 }
 function toAppVue2() {
-  push('/app/app-vue2/about')
+  push('/child/app-vue2/about')
 }
 </script>

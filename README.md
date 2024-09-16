@@ -47,3 +47,6 @@ pnpm build-all
 pnpm build --filter app-vue3
 pnpm build --filter app-vue2
 ```
+
+## 部署(Nginx)
+

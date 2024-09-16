@@ -1,9 +1,9 @@
 // @ts-nocheck
 const isDev = process.env.NODE_ENV === 'development';
-const appVue3Entry = isDev ? '//localhost:3006' : '/app-vue3/index.html'; // app-vue3子应用入口，本地环境下指定端口
-const appVue3ActiveRule = isDev ? '/app/app-vue3' : '/dist/app/app-vue3'; // 子应用激活规则，本地环境下指定端口, /dist/是主应用的base
-const appVue2Entry = isDev ? '//localhost:3007' : '/app-vue2/index.html'; // app-vue2子应用入口，本地环境下指
-const appVue2ActiveRule = isDev ? '/app/app-vue2' : '/dist/app/app-vue2'; // 子应用激活规则，本地环境下指定端口, /dist/是主应用的base
+const appVue3Entry = isDev ? '//localhost:3006' : '/child/app-vue3/'; // app-vue3子应用入口，本地环境下指定端口，生产环境和output的publicPath(assetPrefix)一致
+const appVue3ActiveRule = isDev ? '/child/app-vue3' : '/child-app-vue3'; // 子应用激活规则，本地环境下指定端口, activeRule 和 微应用路由的 base 一致(少最后一个/)
+const appVue2Entry = isDev ? '//localhost:3007' : '/child/app-vue2/'; // app-vue2子应用入口，本地环境下指定端口，生产环境和output的publicPath(assetPrefix)一致
+const appVue2ActiveRule = isDev ? '/child/app-vue2' : '/child-app-vue2'; // 子应用激活规则，本地环境下指定端口, activeRule 和 微应用路由的 base 一致(少最后一个/)
 
 export default {
   subApps: [

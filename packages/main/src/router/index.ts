@@ -5,7 +5,7 @@ import routes from './routes'
 const isPro = process.env.NODE_ENV === 'production';
 
 const options: RouterOptions = {
-  history: createWebHistory(isPro? '/dist/' : '/'),
+  history: createWebHistory(isPro? '/' : '/'),
   routes
 }
 

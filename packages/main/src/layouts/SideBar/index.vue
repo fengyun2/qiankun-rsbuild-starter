@@ -45,7 +45,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import { useRouter } from 'vue-router';
+// import { useRouter } from 'vue-router';
 import { Menu, Setting, Message, Link, Connection } from '@element-plus/icons-vue';
 
 interface TopLevelMenuItem {
@@ -69,9 +69,15 @@ defineOptions({
   name: 'ISideBar',
 });
 
-const router = useRouter();
+// const router = useRouter();
 
 const defaultOpeneds = ref<string[]>(['1', '3']);
+
+const isDev = process.env.NODE_ENV === 'development';
+// window.__POWERED_BY_QIANKUN__
+
+function push(subapp: string) { history.pushState(null, subapp, subapp) }
+
 const menus = ref<TopLevelMenuItem[]>([
   {
     index: '1',
@@ -128,12 +134,14 @@ const menus = ref<TopLevelMenuItem[]>([
       {
         index: '4-1',
         label: '首页',
-        path: '/app/app-vue2',
+        // path: isDev ? '/child/app-vue2' : '/child-app-vue2',
+        path: '/child/app-vue2',
       },
       {
         index: '4-2',
         label: '关于',
-        path: '/app/app-vue2/about',
+        // path: `${isDev ? '/child/app-vue2' : '/child-app-vue2'}/about`,
+        path: '/child/app-vue2/about',
       }
     ],
   },
@@ -145,12 +153,14 @@ const menus = ref<TopLevelMenuItem[]>([
       {
         index: '5-1',
         label: '首页',
-        path: '/app/app-vue3',
+        // path: isDev ? '/child/app-vue3' : '/child-app-vue3',
+        path: '/child/app-vue3',
       },
       {
         index: '5-2',
         label: '关于',
-        path: '/app/app-vue3/about',
+        // path: `${isDev ? '/child/app-vue3' : '/child-app-vue3'}/about`,
+        path: '/child/app-vue3/about',
       }
     ],
   }
@@ -161,7 +171,8 @@ const handleMenuClick = (menu: TopLevelMenuItem | SubMenuItem) => {
     if (menu.target) {
       window.open(menu.path, menu.target);
     } else {
-      router.push(menu.path);
+      // router.push(menu.path);
+      push(menu.path);
     }
   }
 };
