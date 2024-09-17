@@ -1,7 +1,7 @@
 <template>
   <el-aside width="200px">
     <el-scrollbar>
-      <el-menu :default-openeds="defaultOpeneds" :router="false">
+      <el-menu :default-openeds="defaultOpeneds" :router="true">
         <template v-for="menu in menus" :key="menu.index">
           <el-sub-menu
             v-if="menu.items && menu.items.length"
@@ -168,6 +168,10 @@ const menus = ref<TopLevelMenuItem[]>([
   }
 ]);
 
+/**
+ * 方案 2 跳转，若配置了 el-menu router=true 时，不会进入到 routerGo 方法
+ * @param menu
+ */
 const handleMenuClick = (menu: TopLevelMenuItem | SubMenuItem) => {
   if (menu.path) {
     if (menu.target) {
