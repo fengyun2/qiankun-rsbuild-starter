@@ -2,7 +2,7 @@ import { defineConfig } from '@rsbuild/core';
 import { pluginVue2 } from '@rsbuild/plugin-vue2';
 import packageJson from './package.json';
 
-const isPro = process.env.NODE_ENV === 'production';
+// const isPro = process.env.NODE_ENV === 'production';
 
 export default defineConfig({
   plugins: [pluginVue2()],
@@ -15,7 +15,8 @@ export default defineConfig({
     }
   },
   output: {
-    assetPrefix: isPro ? '/child/app-vue2/': '/'
+    // assetPrefix: isPro ? '/child/app-vue2/': '/'
+    assetPrefix: '/'
   },
   tools: {
     rspack: {

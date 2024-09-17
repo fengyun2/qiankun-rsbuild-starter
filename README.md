@@ -50,3 +50,102 @@ pnpm build --filter app-vue2
 
 ## 部署(Nginx)
 
+> Mac 下配置nginx
+
+### nginx安装及配置
+
+1. 安装
+```bash
+brew install nginx
+```
+
+2. 启动
+```bash
+brew services start nginx
+```
+
+3. 重启
+```bash
+brew services restart nginx
+```
+
+4. 停止
+```bash
+brew services stop nginx
+```
+
+mac intel芯片的nginx配置目录在 `/usr/local/etc/nginx`，mac m1芯片的nginx配置目录在 `/opt/homebrew/etc/nginx`。
+mac intel芯片nginx根目录在 `/usr/local/var/www`，mac m1芯片nginx根目录在 `/opt/homebrew/var/www`。
+
+nginx目录结构如下：
+> /usr/local/var/www
+```md
+├── 50x.html
+├── app
+│   ├── app-vue2
+│   ├── app-vue3
+│   └── main
+└── index.html
+```
+
+1. 配置nginx.conf关键代码，详情看[nginx.conf](./nginx.conf)文件
+
+```conf
+http {
+
+    server {
+        listen       8009;
+        server_name  localhost;
+
+        location / {
+          add_header Access-Control-Allow-Origin *;
+          add_header Cache-Control no-cache;
+          root html/app/main;
+          index index.html index.htm;
+          try_files $uri $uri/ /index.html;
+        }
+
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   html;
+        }
+    }
+
+    server {
+        listen       8010;
+        server_name  localhost;
+
+        location / {
+          add_header Access-Control-Allow-Origin *;
+          add_header Cache-Control no-cache;
+          root html/app/app-vue2;
+          index index.html index.htm;
+          try_files $uri $uri/ /index.html;
+        }
+
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   html;
+        }
+    }
+
+    server {
+        listen       8011;
+        server_name  localhost;
+
+        location / {
+          add_header Access-Control-Allow-Origin *;
+          add_header Cache-Control no-cache;
+          root html/app/app-vue3;
+          index index.html index.htm;
+          try_files $uri $uri/ /index.html;
+        }
+
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   html;
+        }
+    }
+}
+```
+

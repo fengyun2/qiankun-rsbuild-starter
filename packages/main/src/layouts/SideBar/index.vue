@@ -1,7 +1,7 @@
 <template>
   <el-aside width="200px">
     <el-scrollbar>
-      <el-menu :default-openeds="defaultOpeneds" :router="true">
+      <el-menu :default-openeds="defaultOpeneds" :router="false">
         <template v-for="menu in menus" :key="menu.index">
           <el-sub-menu
             v-if="menu.items && menu.items.length"
@@ -12,7 +12,7 @@
               {{ menu.title }}
             </template>
             <template v-for="item in menu.items" :key="item.index">
-              <el-menu-item v-if="!item.items" :index="item.path">
+              <el-menu-item v-if="!item.items" :index="item.path" @click="handleMenuClick(item)">
                 {{ item.label }}
               </el-menu-item>
               <el-sub-menu v-else :index="item.index">
@@ -23,6 +23,7 @@
                   v-for="subItem in item.items"
                   :key="subItem.index"
                   :index="subItem.path"
+                  @click="handleMenuClick(subItem)"
                 >
                   {{ subItem.label }}
                 </el-menu-item>
@@ -47,6 +48,7 @@
 import { ref } from 'vue';
 // import { useRouter } from 'vue-router';
 import { Menu, Setting, Message, Link, Connection } from '@element-plus/icons-vue';
+import { routerGo } from '@/utils/utils';
 
 interface TopLevelMenuItem {
   index: string;
@@ -73,10 +75,10 @@ defineOptions({
 
 const defaultOpeneds = ref<string[]>(['1', '3']);
 
-const isDev = process.env.NODE_ENV === 'development';
+// const isDev = process.env.NODE_ENV === 'development';
 // window.__POWERED_BY_QIANKUN__
 
-function push(subapp: string) { history.pushState(null, subapp, subapp) }
+// function push(subapp: string) { history.pushState(null, subapp, subapp) }
 
 const menus = ref<TopLevelMenuItem[]>([
   {
@@ -171,8 +173,10 @@ const handleMenuClick = (menu: TopLevelMenuItem | SubMenuItem) => {
     if (menu.target) {
       window.open(menu.path, menu.target);
     } else {
+      console.log(menu.path, ' handleMenuClick ===>')
       // router.push(menu.path);
-      push(menu.path);
+      // push(menu.path);
+      routerGo(menu.path);
     }
   }
 };

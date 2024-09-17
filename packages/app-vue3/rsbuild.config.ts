@@ -3,7 +3,7 @@ import { pluginVue } from '@rsbuild/plugin-vue';
 import { pluginSass } from '@rsbuild/plugin-sass';
 import packageJson from './package.json';
 
-const isPro = process.env.NODE_ENV === 'production';
+// const isPro = process.env.NODE_ENV === 'production';
 
 export default defineConfig({
   plugins: [pluginVue(), pluginSass()],
@@ -16,7 +16,8 @@ export default defineConfig({
     }
   },
   output: {
-    assetPrefix: isPro ? '/child/app-vue3/': '/'
+    // assetPrefix: isPro ? '/child/app-vue3/': '/'
+    assetPrefix: '/'
   },
   tools: {
     rspack: {

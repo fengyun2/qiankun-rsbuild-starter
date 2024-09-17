@@ -7,21 +7,22 @@ import './index.css';
 
 Vue.config.productionTip = false;
 
-const isPro = process.env.NODE_ENV === 'production';
+// const isPro = process.env.NODE_ENV === 'production';
 
 let router = null;
 let instance = null;
 
 function render(props) {
-  const { container } = props;
-  let baseRoute = '/';
-  if (isPro && window.__POWERED_BY_QIANKUN__) {
-    baseRoute = '/child-app-vue2/';
-  } else if (isPro) {
-    baseRoute = '/child/app-vue2/';
-  } else if (!isPro && window.__POWERED_BY_QIANKUN__) {
-    baseRoute = '/child/app-vue2/';
-  }
+  const { container, routerBase } = props;
+  // let baseRoute = '/';
+  // if (isPro && window.__POWERED_BY_QIANKUN__) {
+  //   baseRoute = '/child-app-vue2/';
+  // } else if (isPro) {
+  //   baseRoute = '/child/app-vue2/';
+  // } else if (!isPro && window.__POWERED_BY_QIANKUN__) {
+  //   baseRoute = '/child/app-vue2/';
+  // }
+  const baseRoute = window.__POWERED_BY_QIANKUN__? routerBase || '/' : '/';
   router = new VueRouter({
     base: baseRoute,
     mode: 'history',
