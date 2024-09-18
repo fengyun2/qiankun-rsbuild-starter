@@ -163,6 +163,12 @@ const menus = ref<TopLevelMenuItem[]>([
         label: '关于',
         // path: `${isDev ? '/child/app-vue3' : '/child-app-vue3'}/about`,
         path: '/child/app-vue3/about',
+      },
+      {
+        index: '5-3',
+        label: '仪表盘',
+        // path: `${isDev? '/child/app-vue3' : '/child-app-vue3'}/dashboard`,
+        path: '/child/app-vue3/dashboard',
       }
     ],
   }

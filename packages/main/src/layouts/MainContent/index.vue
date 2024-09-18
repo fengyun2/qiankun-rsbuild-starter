@@ -1,5 +1,5 @@
 <template>
-  <el-container>
+  <el-container class="container">
     <el-main>
       <router-view></router-view>
     </el-main>
@@ -10,3 +10,8 @@ defineOptions({
   name: 'IMainContent',
 });
 </script>
+<style lang="scss" scoped>
+.container {
+  background-color: var(--el-fill-color) !important;
+}
+</style>

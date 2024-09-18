@@ -1,13 +1,20 @@
 <template>
-  <div class="content">
+  <!-- <div class="content">
     <h1>app-vue3 子应用</h1>
-  </div>
-  <router-link to="/home">首页</router-link>
-  &nbsp;
-  <router-link to="/about">关于</router-link>
-
+  </div> -->
+  <template v-if="!isQiankun">
+    <router-link to="/home">首页</router-link>
+    &nbsp;
+    <router-link to="/about">关于</router-link>
+  </template>
   <router-view />
 </template>
+<script setup lang="ts">
+import { ref } from 'vue';
+import { useQiankun } from '@/utils/utils';
+
+const isQiankun = ref(useQiankun());
+</script>
 
 <style scoped>
 .content {

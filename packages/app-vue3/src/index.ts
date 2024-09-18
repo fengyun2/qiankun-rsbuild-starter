@@ -1,6 +1,10 @@
 import './public-path'
 import { createApp } from 'vue';
 import {createRouter, createWebHistory} from 'vue-router'
+import ElementPlus from 'element-plus'
+import 'element-plus/dist/index.css'
+import * as ElementPlusIconsVue from '@element-plus/icons-vue'
+import globalComponents from '@/components';
 import App from './App.vue';
 import routes from './router';
 import './index.css';
@@ -29,6 +33,11 @@ function render(props = {}) {
   });
   instance = createApp(App);
   instance.use(router);
+  instance.use(ElementPlus);
+  for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
+    instance.component(key, component)
+  }
+  instance.use(globalComponents);
   instance.mount(container? container.querySelector('#root') : '#root');
 }
 

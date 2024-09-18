@@ -10,9 +10,14 @@
     "preview": "rsbuild preview"
   },
   "dependencies": {
+    "@element-plus/icons-vue": "^2.3.1",
+    "@vueuse/core": "^11.1.0",
     "dayjs": "^1.11.13",
+    "echarts": "^5.5.1",
     "element-plus": "^2.8.3",
+    "query-string": "^9.1.0",
     "vue": "^3.5.3",
+    "vue-echarts": "^7.0.3",
     "vue-router": "^4.4.5"
   },
   "devDependencies": {
