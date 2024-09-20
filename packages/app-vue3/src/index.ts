@@ -1,6 +1,8 @@
 import './public-path'
 import { createApp } from 'vue';
+import type { App as VueApp } from 'vue'
 import {createRouter, createWebHistory} from 'vue-router'
+import type { RouterHistory } from 'vue-router'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
@@ -11,11 +13,18 @@ import './index.css';
 
 // const isPro = process.env.NODE_ENV === 'production';
 
-let router = null;
-let instance = null;
-let history = null;
+interface MountProps {
+  container?: HTMLElement;
+  routerBase?: string;
+  onGlobalStateChange?: unknown;
+  setGlobalState?: unknown;
+}
 
-function render(props = {}) {
+let router = null;
+let instance: VueApp | null = null;
+let history: RouterHistory | null = null;
+
+function render(props: MountProps = {}) {
   const { container, routerBase } = props;
   // let baseRoute = '/';
   // if (isPro && window.__POWERED_BY_QIANKUN__) {
@@ -49,7 +58,7 @@ export async function bootstrap() {
   console.log('%c%s', 'color: green;', 'app-vue3 bootstraped');
 }
 
-function storeTest(props) {
+function storeTest(props: MountProps) {
   props.onGlobalStateChange &&
     props.onGlobalStateChange(
       (value, prev) => console.log(`[onGlobalStateChange - ${props.name}]:`, value, prev),
@@ -64,19 +73,23 @@ function storeTest(props) {
     });
 }
 
-export async function mount(props) {
+export async function mount(props: MountProps) {
   storeTest(props);
   render(props);
-  instance.config.globalProperties.$onGlobalStateChange = props.onGlobalStateChange;
-  instance.config.globalProperties.$setGlobalState = props.setGlobalState;
+  if (instance) {
+    instance.config.globalProperties.$onGlobalStateChange = props.onGlobalStateChange;
+    instance.config.globalProperties.$setGlobalState = props.setGlobalState;
+  }
 }
 
 export async function unmount() {
-  instance.unmount();
-  instance._container.innerHTML = '';
-  instance = null;
+  if (instance) {
+    instance.unmount();
+    instance._container.innerHTML = '';
+    instance = null;
+  }
   router = null;
-  history.destroy();
+  history?.destroy();
 }
 
 // createApp(App).mount('#root');
