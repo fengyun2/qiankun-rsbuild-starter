@@ -13,3 +13,12 @@ export function isDev() {
 export function isProd() {
   return process.env.NODE_ENV === 'production';
 }
+
+/**
+ * 延迟执行
+ * @param {number} ms 毫秒
+ * @returns Promise
+ */
+export function delay(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}

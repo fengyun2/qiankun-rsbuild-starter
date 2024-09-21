@@ -1,6 +1,6 @@
-import qs from 'query-string';
+// import qs from 'query-string';
 import dayjs from 'dayjs';
-import { GetParams } from '@/types/global';
+// import { GetParams } from '@/types/global';
 
 const textList = [
   {
@@ -113,8 +113,9 @@ export function queryContentData() {
   return [...getLineData()]
 }
 
-export function queryPopularList(params: GetParams) {
-  const { type = 'text' } = qs.parseUrl(params.url).query;
+export function queryPopularList(params: {type?: string}) {
+  // const { type = 'text' } = qs.parseUrl(params.url).query;
+  const { type = 'text' } = params;
   if (type === 'image') {
     return [...videoList];
   }

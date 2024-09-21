@@ -6,6 +6,12 @@
         <DataPanel />
         <ContentChart />
       </div>
+      <el-row :gutter="16" style="margin-top: 16px;">
+        <el-col :xs="24" :sm="24" :md="24" :lg="12" :xl="12">
+          <PopularContent />
+        </el-col>
+        <el-col :xs="24" :sm="24" :md="24" :lg="12" :xl="12"></el-col>
+      </el-row>
     </div>
     <div class="right-side">
       <el-card class="card">
@@ -24,6 +30,7 @@
 import Banner from './components/Banner.vue';
 import DataPanel from './components/DataPanel.vue';
 import ContentChart from './components/ContentChart.vue'
+import PopularContent from './components/PopularContent.vue';
 
 defineOptions({
   name: 'Dashboard',
@@ -53,22 +60,9 @@ defineOptions({
   border-radius: 4px;
   overflow: auto;
 }
+
 ::v-deep(.panel-border) {
   margin-bottom: 0;
   border-top: 1px solid rgb(242, 243, 245);
 }
-
-// .right {
-//   width: 280px;
-//   ::v-deep {
-//     .el-space__item {
-//       width: 100%;
-//     }
-//   }
-//   .card-header {
-//     display: flex;
-//     justify-content: space-between;
-//     // align-items: center;
-//   }
-// }
 </style>
