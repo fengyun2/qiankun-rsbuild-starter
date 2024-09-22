@@ -16,12 +16,23 @@
       </el-row>
     </div>
     <div class="right-side">
-      <i-card class="card">
-        <template #title>快捷入口</template>
-        <template #extra>
-          <el-link type="primary">查看更多</el-link>
-        </template>
-      </i-card>
+      <el-row class="right-content">
+        <el-col :span="24">
+          <div class="panel moduler-wrap">
+            <QuickOperation />
+            <RecentlyVisited />
+          </div>
+        </el-col>
+        <el-col :span="24" class="panel">
+          <Carousel />
+        </el-col>
+        <el-col :span="24" class="panel">
+          <Announcement />
+        </el-col>
+        <el-col :span="24" class="panel">
+          <Docs />
+        </el-col>
+      </el-row>
     </div>
   </div>
 </template>
@@ -32,6 +43,11 @@ import DataPanel from './components/DataPanel.vue';
 import ContentChart from './components/ContentChart.vue';
 import PopularContent from './components/PopularContent.vue';
 import CategoriesPercent from './components/CategoriesPercent.vue';
+import QuickOperation from './components/QuickOperation.vue';
+import RecentlyVisited from './components/RecentlyVisited.vue';
+import Carousel from './components/Carousel.vue';
+import Announcement from './components/Announcement.vue';
+import Docs from './components/Docs.vue';
 
 defineOptions({
   name: 'Dashboard',
@@ -56,6 +72,10 @@ defineOptions({
   margin-left: 16px;
 }
 
+.right-content {
+  gap: 16px;
+}
+
 .panel {
   background-color: #fff;
   border-radius: 4px;
@@ -67,10 +87,47 @@ defineOptions({
   border-top: 1px solid rgb(242, 243, 245);
 }
 
-.card {
-  ::v-deep(.el-card__header) {
-    border: none;
-    padding-bottom: 0;
+.moduler-wrap {
+  border-radius: 4px;
+  background-color: var(--el-fill-color);
+  ::v-deep(.text) {
+    font-size: 12px;
+    text-align: center;
+    color: var(--el-text-color);
+    margin-top: 0;
+    margin-bottom: 1em;
+  }
+  ::v-deep(.wrapper) {
+    margin-bottom: 8px;
+    text-align: center;
+    cursor: pointer;
+
+    &:last-child {
+      .text {
+        margin-bottom: 0;
+      }
+    }
+    &:hover {
+      .icon {
+        color: var(--el-color-primary);
+        background-color: #e8f3ff;
+      }
+      .text {
+        color: var(--el-color-primary);
+      }
+    }
+  }
+  ::v-deep(.icon) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    margin-bottom: 4px;
+    color: var(--el-text-color);
+    font-size: 16px;
+    background-color: var(--el-fill-color);
+    border-radius: 4px;
   }
 }
 </style>
