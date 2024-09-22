@@ -1,6 +1,6 @@
 <template>
   <i-card class="general-card">
-    <template #title> 线上热门内容 </template>
+    <template #title>线上热门内容</template>
     <template #extra>
       <el-link type="primary">查看更多</el-link>
     </template>
@@ -19,7 +19,7 @@
         :border="false"
         height="264"
         style="width: 100%"
-        class="table"
+        class="inner-table"
         v-loading="loading"
       >
         <el-table-column
@@ -92,30 +92,30 @@ fetchData('text');
 <style lang="scss" scoped>
 .general-card {
   min-height: 395px;
-  ::v-deep {
-    .el-card__header {
-      border: none;
-      padding-bottom: 0;
-    }
+  ::v-deep(.el-card__header) {
+    border: none;
+    padding-bottom: 0;
   }
 }
+
 .general-card-space {
   display: flex;
 }
-.table {
-  ::v-deep {
-    .el-table__header {
-      th.el-table__cell {
-        color: var(--el-text-color-primary);
-        background-color: var(--el-fill-color);
-        font-weight: 500;
-      }
-    }
-    .el-table__inner-wrapper {
-      height: 0;
+
+.inner-table {
+  ::v-deep(.el-table__header) {
+    // font-size: 24px;
+    .el-table__cell {
+      color: var(--el-text-color-primary) !important;
+      background-color: var(--el-fill-color) !important;
+      font-weight: 500 !important;
     }
   }
+  ::v-deep(.el-table__inner-wrapper::before) {
+    height: 0;
+  }
 }
+
 .increases-cell {
   display: flex;
   align-items: center;
