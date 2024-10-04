@@ -64,12 +64,13 @@
 <style scoped lang="scss">
   .tab-bar-container {
     position: relative;
-    background-color: var(--color-bg-2);
+    background-color: var(--el-color-white);
+    padding-top: 60px;
     .tab-bar-box {
       display: flex;
       padding: 0 0 0 20px;
-      background-color: var(--color-bg-2);
-      border-bottom: 1px solid var(--color-border);
+      background-color: var(--el-color-white);
+      border-bottom: 1px solid var(--el-border-color);
       .tab-bar-scroll {
         height: 32px;
         flex: 1;
