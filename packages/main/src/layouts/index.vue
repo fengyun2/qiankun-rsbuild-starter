@@ -3,6 +3,7 @@
     <ISideBar />
     <el-container direction="vertical">
       <IHeader />
+      <ITabBar />
       <IMainContent />
     </el-container>
   </el-container>
@@ -11,6 +12,7 @@
 import ISideBar from './SideBar/index.vue'
 import IHeader from './Header/index.vue'
 import IMainContent from './MainContent/index.vue'
+import ITabBar from '@/components/tab-bar/index.vue'
 
 defineOptions({
   name: 'ILayout',

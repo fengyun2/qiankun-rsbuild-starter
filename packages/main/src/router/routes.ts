@@ -1,4 +1,5 @@
 import type { RouteRecordRaw } from 'vue-router'
+import SubContainer from '@/components/SubContainer.vue'
 
 const routes: RouteRecordRaw[] = [
   {
@@ -22,13 +23,15 @@ const routes: RouteRecordRaw[] = [
         path: '/child/app-vue3/:pathMatch(.*)*',
         name: 'app-vue3',
         meta: {},
-        component: () => import('@/components/SubContainer.vue')
+        // component: () => import('@/components/SubContainer.vue')
+        component: SubContainer
       },
       {
         path: '/child/app-vue2/:pathMatch(.*)*',
         name: 'app-vue2',
         meta: {},
-        component: () => import('@/components/SubContainer.vue')
+        // component: () => import('@/components/SubContainer.vue')
+        component: SubContainer
       }
     ]
   }

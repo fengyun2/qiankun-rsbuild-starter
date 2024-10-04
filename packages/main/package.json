@@ -13,6 +13,8 @@
     "@element-plus/icons-vue": "^2.3.1",
     "dayjs": "^1.11.13",
     "element-plus": "^2.8.3",
+    "mitt": "^3.0.1",
+    "pinia": "^2.2.2",
     "qiankun": "^2.10.16",
     "vue": "^3.5.3",
     "vue-router": "^4.4.5"

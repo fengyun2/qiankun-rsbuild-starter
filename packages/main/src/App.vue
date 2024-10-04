@@ -12,10 +12,16 @@
 </template>
 
 <script setup lang="ts">
+import { onMounted } from 'vue'
 import { ElConfigProvider } from 'element-plus'
 import zhCn from 'element-plus/es/locale/lang/zh-cn'
 import 'dayjs/locale/zh-cn'
 import ILayout from './layouts/index.vue'
+import { useAppStore } from '@/store';
+onMounted(() => {
+  const appStore = useAppStore();
+  appStore.fetchMenuList();
+})
 </script>
 
 <style scoped>
